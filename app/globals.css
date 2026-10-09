@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap");
 @import "tailwindcss";
 
 :root {
@@ -24,3 +25,114 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+@keyframes drink-scroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(calc(-50% - 0.75rem));
+  }
+}
+
+.drink-slider {
+  animation: drink-scroll 60s linear infinite;
+}
+
+/* =========================
+   Hero Slideshow
+========================= */
+
+/*
+  画像DOM自体は入れ替えず、
+  常にゆっくり動かし続ける
+*/
+.hero-continuous-zoom {
+  animation: heroContinuousZoom 18s ease-in-out infinite alternate;
+  will-change: transform;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+}
+
+@keyframes heroContinuousZoom {
+  0% {
+    transform: scale(1) translateZ(0);
+  }
+
+  100% {
+    transform: scale(1.12) translateZ(0);
+  }
+}
+
+
+/* 現在の画像を切り替え前にフェードアウト */
+.hero-slide-fade-out {
+  animation: heroFadeOut 2.5s ease-in-out forwards;
+  will-change: opacity;
+}
+
+@keyframes heroFadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+
+/* Progress */
+.hero-progress {
+  animation: heroProgress 6s linear forwards;
+  will-change: width;
+}
+
+@keyframes heroProgress {
+  from {
+    width: 0%;
+  }
+
+  to {
+    width: 100%;
+  }
+}
+
+
+/* =========================
+   About 背景の雲
+========================= */
+
+.about-cloud {
+  position: absolute;
+  border-radius: 100px;
+  background: #e6d8c5;
+  opacity: 0.3;
+  filter: none;
+}
+
+/* 左側のふくらみ */
+.about-cloud::before {
+  content: "";
+  position: absolute;
+  width: 48%;
+  height: 130%;
+  left: 12%;
+  bottom: 20%;
+  border-radius: 50%;
+  background: #e6d8c5;
+}
+
+/* 右側のふくらみ */
+.about-cloud::after {
+  content: "";
+  position: absolute;
+  width: 52%;
+  height: 155%;
+  right: 12%;
+  bottom: 12%;
+  border-radius: 50%;
+  background: #e6d8c5;
+}
+
